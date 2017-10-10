@@ -1,6 +1,14 @@
 " basic -------{{{
-
 set nocompatible
+" vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'DoxygenToolkit.vim'
+call vundle#end()
+filetype plugin indent on
+
 set nu
 "tab => space
 set ts=4
@@ -31,10 +39,13 @@ set showcmd " display incomplete commands
 " mappings --- {{{
 let mapleader = "-"
 
+nnoremap <F4> :%retab!<cr>
+nnoremap <F3> :%s/\s\+$//g<cr>$
 nnoremap <F5> :w<CR>
 inoremap <F5> <ESC>:w<CR>
 nnoremap <F2> :q<CR>
 inoremap <F2> <ESC>:q<CR>
+
 inoremap jk <ESC>
 inoremap {} {<CR>}<ESC>O
 inoremap "" ""<ESC>i
@@ -59,18 +70,19 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j
 
 "tab
-noremap <silent><tab>e :tabnew<cr>
+nnoremap <silent><tab>e :tabnew<cr>
 nnoremap <silent><Tab><tab> :tabn<cr>
-noremap <silent><leader>1 :tabn 1<cr>
-noremap <silent><leader>2 :tabn 2<cr>
-noremap <silent><leader>3 :tabn 3<cr>
-noremap <silent><leader>4 :tabn 4<cr>
-noremap <silent><leader>5 :tabn 5<cr>
-noremap <silent><leader>6 :tabn 6<cr>
-noremap <silent><leader>7 :tabn 7<cr>
-noremap <silent><leader>8 :tabn 8<cr>
-noremap <silent><leader>9 :tabn 9<cr>
-noremap <silent><leader>0 :tabn 10<cr>
+nnoremap <silent><leader>1 :tabn 1<cr>
+nnoremap <silent><leader>2 :tabn 2<cr>
+nnoremap <silent><leader>3 :tabn 3<cr>
+nnoremap <silent><leader>4 :tabn 4<cr>
+nnoremap <silent><leader>5 :tabn 5<cr>
+nnoremap <silent><leader>6 :tabn 6<cr>
+nnoremap <silent><leader>7 :tabn 7<cr>
+nnoremap <silent><leader>8 :tabn 8<cr>
+nnoremap <silent><leader>9 :tabn 9<cr>
+nnoremap <silent><leader>0 :tabn 10<cr>
+
 "}}}
 
 " styles --- {{{
@@ -128,3 +140,14 @@ augroup filetype_cpp
     autocmd FileType c,cpp 2match LineSpaceNotice /[ \t]\+$/ " highlight spaces in the end of line
 augroup END
 "}}}
+
+" doxygen toolkit --- {{{
+
+let g:DoxygenToolkit_authorName = "JiaoLinfeng, jiaolinfeng@esunny.cc"
+let g:DoxygenToolkit_versionString = "1.0"
+
+nnoremap fl :DoxLic<cr>
+nnoremap fa :DoxAuthor<cr>
+nnoremap fb :Dox<cr>
+
+" }}}
